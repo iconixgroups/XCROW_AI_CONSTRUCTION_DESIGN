@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design View</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/3d_viewer.js"></script>
+    <script src="/static/js/ai_engine.js"></script>
+</head>
+<body>
+    <div id="designViewContainer">
+        <h1>Design View</h1>
+        <div id="3dModelContainer"></div>
+        <button onclick="generateDesign()">Generate Design</button>
+        <button onclick="analyzeDesign()">Analyze Design</button>
+    </div>
+
+    <script>
+        let designData = {};
+        let projectData = JSON.parse(localStorage.getItem('projectData'));
+
+        function generateDesign() {
+            designData = aiEngine.generateDesign(projectData);
+            updateUI();
+        }
+
+        function updateUI() {
+            let viewer = new Viewer3D('3dModelContainer');
+            viewer.loadModel(designData.model);
+        }
+    </script>
+</body>
+</html>

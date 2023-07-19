@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis View</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/design_analysis.js"></script>
+</head>
+<body>
+    <div id="analysisViewContainer">
+        <h1>Design Analysis</h1>
+        <div id="analysisData"></div>
+    </div>
+
+    <script>
+        window.addEventListener('analysisComplete', function (e) {
+            document.getElementById('analysisData').innerHTML = JSON.stringify(e.detail, null, 2);
+        });
+    </script>
+</body>
+</html>
